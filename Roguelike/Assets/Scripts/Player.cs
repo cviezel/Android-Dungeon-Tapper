@@ -5,8 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   public GameObject friendlyBullet;
-  float fireRate = 1;
-  float fireDelay = 0;
+  //public GameObject friendlyLaser;
+  public float fireDelay;
+  float fireTime = 0;
 
   float chargeTime = 0;
   Vector2 lastAim;
@@ -25,26 +26,41 @@ public class Player : MonoBehaviour
     transform.position = new Vector2(pos.x, pos.y);
     //transform.position = Vector2.MoveTowards(start, pos, speed * Time.deltaTime);
   }
-  void Shoot(Vector2 aim, float speed)
+  void Shoot(Vector2 aim, float speed, bool fullyCharged)
   {
-    //Vector2 pos;
-    //pos = Camera.main.ScreenToWorldPoint(touch.position);
     Vector2 dir = aim - (new Vector2(transform.position.x, transform.position.y));
     dir.Normalize();
     GameObject bullet = Instantiate (friendlyBullet, transform.position, Quaternion.identity) as GameObject;
-    bullet.GetComponent<Rigidbody2D> ().velocity = dir * speed;
+    bullet.GetComponent<Rigidbody2D>().velocity = dir * speed;
+    FriendlyBullet b = bullet.GetComponent<FriendlyBullet>();
+    b.setSpeed(speed);
+    if(fullyCharged)
+    {
+      bullet.GetComponent<CircleCollider2D>().isTrigger = true;
+    }
   }
+  /*
+  void Laser(Vector2 aim, float speed)
+  {
+    Vector2 dir = aim - (new Vector2(transform.position.x, transform.position.y));
+    dir.Normalize();
+    GameObject laser = Instantiate (friendlyLaser, transform.position, Quaternion.identity) as GameObject;
+    laser.GetComponent<Rigidbody2D>().velocity = dir * speed;
+    FriendlyBullet b = bullet.GetComponent<FriendlyLaser>();
+    b.setSpeed(speed);
+  }
+  */
   void Update()
   {
     Touch[] touch = Input.touches;
     if(Input.touchCount == 1)
     {
       Move(touch[0]);
-      if(chargeTime > 0 && Time.time > fireDelay)
+      if(chargeTime > 0 && Time.time > fireTime)
       {
         //Debug.Log(chargeTime);
-        fireDelay = Time.time + fireRate;
-        Shoot(lastAim, (fireRate + chargeTime) * 100);
+        fireTime = Time.time + fireDelay;
+        Shoot(lastAim, (1 + chargeTime) * 100, false);
         chargeTime = 0;
       }
     }
@@ -53,18 +69,11 @@ public class Player : MonoBehaviour
       Move(touch[0]);
       chargeTime += touch[1].deltaTime;
       lastAim = Camera.main.ScreenToWorldPoint(touch[1].position);
-      if(chargeTime >= 5)
+      if(chargeTime >= 3)
       {
-        Shoot(lastAim, 500);
+        Shoot(lastAim, 500, true);
         chargeTime = 0;
       }
-      /*
-      if(Time.time > fireDelay)
-      {
-        fireDelay = Time.time + fireRate;
-        Shoot(touch[1], 100);
-      }
-      */
     }
   }
 }
