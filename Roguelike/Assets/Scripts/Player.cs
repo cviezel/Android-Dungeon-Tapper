@@ -23,7 +23,12 @@ public class Player : MonoBehaviour
     Vector2 pos, start;
     start = transform.position;
     pos = Camera.main.ScreenToWorldPoint(touch.position);
-    transform.position = new Vector2(pos.x, pos.y);
+    Debug.Log(Vector2.Distance(start, pos));
+    if(Vector2.Distance(start, pos) < 50) //wasn't a slide
+    {
+      transform.position = new Vector2(pos.x, pos.y);
+    }
+
     //transform.position = Vector2.MoveTowards(start, pos, speed * Time.deltaTime);
   }
   void Shoot(Vector2 aim, float speed, bool fullyCharged)
