@@ -44,10 +44,13 @@ public class Enemy : MonoBehaviour
     {
       FriendlyBullet b = col.gameObject.GetComponent<FriendlyBullet>();
       //Debug.Log(col.gameObject.GetComponent<Rigidbody2D>().velocity);
-      float dmg = b.getSpeed() / 5;
-      health -= dmg;
-      Debug.Log("lost " + dmg + " health");
-      Destroy(col.gameObject);
+      if(b != null)
+      {
+        float dmg = b.getSpeed() / 5;
+        health -= dmg;
+        //Debug.Log("lost " + dmg + " health");
+        Destroy(col.gameObject);
+      }
     }
   }
   void OnTriggerEnter2D(Collider2D col)
@@ -56,9 +59,12 @@ public class Enemy : MonoBehaviour
     {
       FriendlyBullet b = col.gameObject.GetComponent<FriendlyBullet>();
       //Debug.Log(col.gameObject.GetComponent<Rigidbody2D>().velocity);
-      float dmg = b.getSpeed() / 5;
-      health -= dmg;
-      Debug.Log("lost " + dmg + " health");
+      if(b != null)
+      {
+        float dmg = b.getSpeed() / 5;
+        health -= dmg;
+        Debug.Log("lost " + dmg + " health");
+      }
     }
   }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FriendlyBullet
   - Enemy
+  - MeleeEnemy
   layers:
   - Default
   - TransparentFX

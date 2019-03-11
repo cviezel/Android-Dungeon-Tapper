@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
   float chargeTime = 0;
   Vector2 lastAim;
+  float health = 100;
 
   // Start is called before the first frame update
   void Start()
@@ -23,12 +24,10 @@ public class Player : MonoBehaviour
     Vector2 pos, start;
     start = transform.position;
     pos = Camera.main.ScreenToWorldPoint(touch.position);
-    Debug.Log(Vector2.Distance(start, pos));
     if(Vector2.Distance(start, pos) < 50) //wasn't a slide
     {
       transform.position = new Vector2(pos.x, pos.y);
     }
-
     //transform.position = Vector2.MoveTowards(start, pos, speed * Time.deltaTime);
   }
   void Shoot(Vector2 aim, float speed, bool fullyCharged)
@@ -79,6 +78,15 @@ public class Player : MonoBehaviour
         Shoot(lastAim, 500, true);
         chargeTime = 0;
       }
+    }
+  }
+  void OnCollisionEnter2D (Collision2D col)
+  {
+    if(col.gameObject.tag.Equals("Enemy"))
+    {
+      health -= 10;
+      Debug.Log(health);
+      Destroy(col.gameObject);
     }
   }
 }

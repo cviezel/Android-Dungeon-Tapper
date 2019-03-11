@@ -14,17 +14,15 @@ public class FriendlyBullet : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    /*
-    if(rb.velocity.magnitude < 0.1)
-    {
-      Destroy(this);
-    }
-    */
     if(this.name != "FriendlyBullet")
     {
-      if(this.transform.position.x >= 100)
+      if(rb.velocity.x == 0)
       {
-        Destroy(this);
+        Destroy(this.gameObject);
+      }
+      else if(this.transform.position.x >= 100)
+      {
+        Destroy(this.gameObject);
       }
     }
   }
