@@ -20,10 +20,6 @@ public class FriendlyBullet : MonoBehaviour
       {
         Destroy(this.gameObject);
       }
-      else if(this.transform.position.x >= 100)
-      {
-        Destroy(this.gameObject);
-      }
     }
   }
   public float getSpeed()
@@ -33,5 +29,12 @@ public class FriendlyBullet : MonoBehaviour
   public void setSpeed(float s)
   {
     speed = s;
+  }
+  void OnCollisionEnter2D (Collision2D col)
+  {
+    if(col.gameObject.tag.Equals("Wall"))
+    {
+      Destroy(this.gameObject);
+    }
   }
 }

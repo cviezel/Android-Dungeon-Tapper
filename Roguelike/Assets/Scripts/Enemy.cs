@@ -9,10 +9,13 @@ public class Enemy : MonoBehaviour
   public float speed = 500f;
   public Rigidbody2D rb;
   Player p;
+  bool recentlyHit;
+  float moveTimer = 0;
   void Start()
   {
     p = GameObject.Find("Player").GetComponent<Player>();
     rb = GetComponent<Rigidbody2D>();
+    recentlyHit = false;
   }
   void moveTowardsPlayer(float speed)
   {
@@ -29,13 +32,23 @@ public class Enemy : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if(this.name != "Enemy")
-    {
-      moveTowardsPlayer(speed);
-    }
     if(health <= 0)
     {
       Destroy(this.gameObject);
+    }
+    if(this.name != "Enemy" && !recentlyHit)
+    {
+      moveTowardsPlayer(speed);
+    }
+    if(recentlyHit)
+    {
+      moveTimer += Time.deltaTime;
+      Debug.Log(moveTimer);
+      if(moveTimer >= 0.05)
+      {
+        moveTimer = 0;
+        recentlyHit = false;
+      }
     }
   }
   void OnCollisionEnter2D (Collision2D col)
@@ -46,6 +59,7 @@ public class Enemy : MonoBehaviour
       //Debug.Log(col.gameObject.GetComponent<Rigidbody2D>().velocity);
       if(b != null)
       {
+        recentlyHit = true;
         float dmg = b.getSpeed() / 5;
         health -= dmg;
         //Debug.Log("lost " + dmg + " health");
@@ -61,6 +75,7 @@ public class Enemy : MonoBehaviour
       //Debug.Log(col.gameObject.GetComponent<Rigidbody2D>().velocity);
       if(b != null)
       {
+        recentlyHit = true;
         float dmg = b.getSpeed() / 5;
         health -= dmg;
         Debug.Log("lost " + dmg + " health");
