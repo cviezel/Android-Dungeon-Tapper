@@ -8,6 +8,8 @@ public class Spawner : MonoBehaviour
     public Player p;
     public float spawnDelay;
     public GameObject enemy;
+    public GameObject rangedEnemy;
+    public GameObject bomber;
     float nextSpawn = 0;
     void Start()
     {
@@ -20,8 +22,16 @@ public class Spawner : MonoBehaviour
       if(Time.time > nextSpawn)
       {
         nextSpawn = Time.time + spawnDelay;
-        Vector2 spawnLocation = new Vector2(Random.Range(-100, 100), Random.Range(-100, 100));
-        GameObject e = Instantiate(enemy, spawnLocation, Quaternion.identity) as GameObject;
+        Vector2 spawnLocation = new Vector2(Random.Range(-80, 80), Random.Range(-50, 50));
+        int x = Random.Range(0, 2);
+        if(x == 0)
+        {
+          GameObject e = Instantiate(enemy, spawnLocation, Quaternion.identity) as GameObject;
+        }
+        else
+        {
+          GameObject e = Instantiate(rangedEnemy, spawnLocation, Quaternion.identity) as GameObject;
+        }
       }
     }
 }

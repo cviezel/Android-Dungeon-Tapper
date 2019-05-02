@@ -20,6 +20,10 @@ public class FriendlyBullet : MonoBehaviour
       {
         Destroy(this.gameObject);
       }
+      if(transform.position.x > 80 || transform.position.x > 80 || transform.position.y > 50 || transform.position.y < -50)
+      {
+        Destroy(this.gameObject);
+      }
     }
   }
   public float getSpeed()

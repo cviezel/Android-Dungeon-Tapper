@@ -6,8 +6,6 @@ TagManager:
   tags:
   - FriendlyBullet
   - Enemy
-  - MeleeEnemy
-  - Wall
   layers:
   - Default
   - TransparentFX
@@ -17,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - Friendly
-  - Enemy
   - Player
-  - Wall
+  - Enemy
+  - PlayerProjectile
+  - EnemyProjectile
   - 
   - 
   - 

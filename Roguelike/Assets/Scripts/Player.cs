@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
       {
         //Debug.Log(chargeTime);
         fireTime = Time.time + fireDelay;
-        Shoot(lastAim, (1 + chargeTime) * 100, false);
+        Shoot(lastAim, (1 + chargeTime) * 150, false);
         chargeTime = 0;
       }
     }
@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
       Move(touch[0]);
       chargeTime += touch[1].deltaTime;
       lastAim = Camera.main.ScreenToWorldPoint(touch[1].position);
-      if(chargeTime >= 3)
+      if(chargeTime >= 1)
       {
         Shoot(lastAim, 500, true);
         chargeTime = 0;

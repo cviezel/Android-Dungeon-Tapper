@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
   // Start is called before the first frame update
   float health = 100;
-  public float speed = 500f;
+  public float speed;
   public Rigidbody2D rb;
   Player p;
   bool recentlyHit;
@@ -22,12 +22,6 @@ public class Enemy : MonoBehaviour
     Vector2 dir = new Vector2(p.transform.position.x, p.transform.position.y) - (new Vector2(transform.position.x, transform.position.y));
     dir.Normalize();
     rb.velocity = dir * speed;
-    /*
-    Vector2 target = new Vector2(p.transform.position.x, p.transform.position.y);
-    float step = speed * Time.deltaTime;
-    transform.position = Vector2.MoveTowards(transform.position, target, step);
-    */
-
   }
   // Update is called once per frame
   void Update()
@@ -36,7 +30,7 @@ public class Enemy : MonoBehaviour
     {
       Destroy(this.gameObject);
     }
-    if(this.name != "Enemy" && !recentlyHit)
+    if(this.name != "MeleeEnemy" && !recentlyHit)
     {
       moveTowardsPlayer(speed);
     }
