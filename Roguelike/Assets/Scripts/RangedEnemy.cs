@@ -7,7 +7,7 @@ public class RangedEnemy : MonoBehaviour
     // Start is called before the first frame update
     float health = 50;
     public GameObject enemyBullets;
-    public float speed = 500f;
+    public float speed;
     public Rigidbody2D rb;
     Player p;
     bool recentlyHit;
@@ -49,13 +49,13 @@ public class RangedEnemy : MonoBehaviour
         int r = Random.Range(-20, 20);
         if(r == 0)
         {
-          Debug.Log(r);
+          //Debug.Log(r);
           move(3);
         }
         r = Random.Range(-50, 50);
         if(r == 0)
         {
-          Debug.Log(r);
+          //Debug.Log(r);
           fire();
         }
       }
@@ -82,6 +82,10 @@ public class RangedEnemy : MonoBehaviour
           //Debug.Log("lost " + dmg + " health");
           Destroy(col.gameObject);
         }
+      }
+      else if(col.gameObject.tag.Equals("Player"))
+      {
+        Destroy(this.gameObject);
       }
     }
     void OnTriggerEnter2D(Collider2D col)

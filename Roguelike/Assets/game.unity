@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 11945933}
   m_Layer: 9
   m_Name: RangedEnemy
-  m_TagString: Enemy
+  m_TagString: RangedEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBullets: {fileID: 2108222297}
-  speed: 3
+  speed: 7
   rb: {fileID: 0}
 --- !u!50 &11945934
 Rigidbody2D:
@@ -920,6 +920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   friendlyBullet: {fileID: 20287582}
   fireDelay: 0
+  rb: {fileID: 0}
 --- !u!58 &573011995
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
   // Start is called before the first frame update
-  float health = 100;
+  float health = 80;
   public float speed;
   public Rigidbody2D rb;
   Player p;
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     if(recentlyHit)
     {
       moveTimer += Time.deltaTime;
-      Debug.Log(moveTimer);
+      //Debug.Log(moveTimer);
       if(moveTimer >= 0.05)
       {
         moveTimer = 0;

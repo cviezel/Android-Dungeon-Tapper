@@ -23,14 +23,18 @@ public class Spawner : MonoBehaviour
       {
         nextSpawn = Time.time + spawnDelay;
         Vector2 spawnLocation = new Vector2(Random.Range(-80, 80), Random.Range(-50, 50));
-        int x = Random.Range(0, 2);
+        int x = Random.Range(0, 3);
         if(x == 0)
         {
           GameObject e = Instantiate(enemy, spawnLocation, Quaternion.identity) as GameObject;
         }
-        else
+        else if(x == 1)
         {
           GameObject e = Instantiate(rangedEnemy, spawnLocation, Quaternion.identity) as GameObject;
+        }
+        else
+        {
+          GameObject e = Instantiate(bomber, spawnLocation, Quaternion.identity) as GameObject;
         }
       }
     }

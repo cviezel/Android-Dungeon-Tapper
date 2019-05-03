@@ -29,7 +29,13 @@ public class Bomber : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-
+    if(this.name != "Bomber")
+    {
+      if(transform.position.x > 80 || transform.position.x > 80 || transform.position.y > 50 || transform.position.y < -50)
+      {
+        Destroy(this.gameObject);
+      }
+    }
   }
   void OnCollisionEnter2D (Collision2D col)
   {

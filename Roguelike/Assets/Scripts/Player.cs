@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
   //public GameObject friendlyLaser;
   public float fireDelay;
   float fireTime = 0;
-
+  public Rigidbody2D rb;
   float chargeTime = 0;
   Vector2 lastAim;
   float health = 100;
@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
+    rb = GetComponent<Rigidbody2D>();
   }
 
   // Update is called once per frame
@@ -84,6 +85,7 @@ public class Player : MonoBehaviour
   {
     if(col.gameObject.tag.Equals("Enemy"))
     {
+      rb.velocity = new Vector2(0, 0);
       health -= 10;
       Debug.Log(health);
       Destroy(col.gameObject);
