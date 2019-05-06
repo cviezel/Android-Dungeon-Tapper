@@ -83,6 +83,15 @@ public class Player : MonoBehaviour
   }
   void OnCollisionEnter2D (Collision2D col)
   {
+    if(col.gameObject.tag.Equals("HealthPack"))
+    {
+      if(health < 100)
+      {
+        health += 10;
+      }
+      Debug.Log(health);
+      Destroy(col.gameObject);
+    }
     if(col.gameObject.tag.Equals("Enemy"))
     {
       rb.velocity = new Vector2(0, 0);

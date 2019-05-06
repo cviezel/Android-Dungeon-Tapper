@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - MeleeEnemy
   - RangedEnemy
+  - HealthPack
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Enemy
   - PlayerProjectile
   - EnemyProjectile
-  - 
+  - Item
   - 
   - 
   - 

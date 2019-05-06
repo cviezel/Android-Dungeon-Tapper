@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
   Player p;
   bool recentlyHit;
   float moveTimer = 0;
+  public GameObject hp;
   void Start()
   {
     p = GameObject.Find("Player").GetComponent<Player>();
@@ -28,6 +29,11 @@ public class Enemy : MonoBehaviour
   {
     if(health <= 0)
     {
+      int x = Random.Range(0, 2);
+      if(x == 0)
+      {
+        GameObject healthPack = Instantiate (hp, transform.position, Quaternion.identity) as GameObject;
+      }
       Destroy(this.gameObject);
     }
     if(this.name != "MeleeEnemy" && !recentlyHit)
