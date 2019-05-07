@@ -9,6 +9,7 @@ TagManager:
   - MeleeEnemy
   - RangedEnemy
   - HealthPack
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

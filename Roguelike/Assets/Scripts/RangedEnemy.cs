@@ -42,6 +42,7 @@ public class RangedEnemy : MonoBehaviour
       if(health <= 0)
       {
         Destroy(this.gameObject);
+        Spawner.enemiesAlive--;
       }
       if(this.name != "RangedEnemy" && !recentlyHit)
       {
@@ -85,6 +86,7 @@ public class RangedEnemy : MonoBehaviour
       }
       else if(col.gameObject.tag.Equals("Player"))
       {
+        Spawner.enemiesAlive--;
         Destroy(this.gameObject);
       }
     }

@@ -5,8 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   public GameObject friendlyBullet;
+  public GameObject bigShuriken;
   //public GameObject friendlyLaser;
-  public float fireDelay;
+  float fireDelay = 0.5f;
   float fireTime = 0;
   public Rigidbody2D rb;
   float chargeTime = 0;
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour
     b.setSpeed(speed);
     if(fullyCharged)
     {
+      b.transform.localScale += new Vector3(1, 1, 0);
       bullet.GetComponent<CircleCollider2D>().isTrigger = true;
     }
   }
@@ -85,17 +87,29 @@ public class Player : MonoBehaviour
   {
     if(col.gameObject.tag.Equals("HealthPack"))
     {
-      if(health < 100)
+      if(health <= health - 10)
       {
         health += 10;
+      }
+      else
+      {
+        health = health;
       }
       Debug.Log(health);
       Destroy(col.gameObject);
     }
     if(col.gameObject.tag.Equals("Enemy"))
     {
+      Spawner.enemiesAlive--;
       rb.velocity = new Vector2(0, 0);
       health -= 10;
+      Debug.Log(health);
+      Destroy(col.gameObject);
+    }
+    if(col.gameObject.tag.Equals("EnemyBullet"))
+    {
+      rb.velocity = new Vector2(0, 0);
+      health -= 2;
       Debug.Log(health);
       Destroy(col.gameObject);
     }

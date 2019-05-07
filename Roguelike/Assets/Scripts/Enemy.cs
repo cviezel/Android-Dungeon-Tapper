@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
       {
         GameObject healthPack = Instantiate (hp, transform.position, Quaternion.identity) as GameObject;
       }
+      Spawner.enemiesAlive--;
       Destroy(this.gameObject);
     }
     if(this.name != "MeleeEnemy" && !recentlyHit)

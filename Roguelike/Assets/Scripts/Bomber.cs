@@ -34,6 +34,7 @@ public class Bomber : MonoBehaviour
       if(transform.position.x > 80 || transform.position.x > 80 || transform.position.y > 50 || transform.position.y < -50)
       {
         Destroy(this.gameObject);
+        Spawner.enemiesAlive--;
       }
     }
   }
@@ -45,6 +46,7 @@ public class Bomber : MonoBehaviour
       //Debug.Log(col.gameObject.GetComponent<Rigidbody2D>().velocity);
       if(b != null)
       {
+        Spawner.enemiesAlive--;
         recentlyHit = true;
         float dmg = b.getSpeed() / 5;
         Destroy(this.gameObject);
