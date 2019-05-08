@@ -8,14 +8,15 @@ public class Player : MonoBehaviour
   public GameObject friendlyBullet;
   public GameObject bigShuriken;
   //public GameObject friendlyLaser;
-  float fireDelay = 0.5f;
   float fireTime = 0;
-  public Rigidbody2D rb;
   float chargeTime = 0;
   Vector2 lastAim;
   public static int health = 100;
   public static int maxHealth = 100;
   public static int charges = 2;
+  public static int maxCharges = 2;
+  public static float fireDelay = 0.5f;
+
   public Text txtHealth;
   public Text txtCharges;
 
@@ -25,7 +26,7 @@ public class Player : MonoBehaviour
     maxHealth = health;
     txtHealth.text = "Health: " + health.ToString();
     txtCharges.text = "Charged Shots: " + charges.ToString();
-    rb = GetComponent<Rigidbody2D>();
+    //rb = GetComponent<Rigidbody2D>();
   }
 
   // Update is called once per frame
@@ -72,6 +73,8 @@ public class Player : MonoBehaviour
     Touch[] touch = Input.touches;
     if(Input.touchCount == 1)
     {
+      txtHealth.text = "Health: " + health.ToString();
+      txtCharges.text = "Charged Shots: " + charges.ToString();
       Move(touch[0]);
       if(chargeTime > 0 && Time.time > fireTime)
       {
@@ -83,6 +86,7 @@ public class Player : MonoBehaviour
     }
     else if(Input.touchCount == 2)
     {
+      //rb.velocity = new Vector2(0, 0);
       Move(touch[0]);
       chargeTime += touch[1].deltaTime;
       lastAim = Camera.main.ScreenToWorldPoint(touch[1].position);
@@ -113,14 +117,13 @@ public class Player : MonoBehaviour
     {
       Spawner.enemiesAlive--;
       Spawner.enemiesKilled++;
-      rb.velocity = new Vector2(0, 0);
+      //rb.velocity = new Vector2(0, 0);
       health -= 10;
       Debug.Log(health);
       Destroy(col.gameObject);
     }
     if(col.gameObject.tag.Equals("EnemyBullet"))
     {
-      rb.velocity = new Vector2(0, 0);
       health -= 2;
       Debug.Log(health);
       Destroy(col.gameObject);

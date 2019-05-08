@@ -14,12 +14,18 @@ public class Spawner : MonoBehaviour
     float nextSpawn = 0;
     public static int enemiesKilled = 0;
     int roundNum = 1;
-    bool roundFlag = true;
+    public static bool roundFlag = true;
     public static int enemiesAlive = 0;
     int enemyLimit = 10;
     public Text txtRoundNum;
     public Text txtEnemiesLeft;
     int enemiesThisRound = 20;
+
+    public GameObject perk1;
+    public GameObject perk2;
+    public GameObject perk3;
+    public GameObject perk4;
+
 
     void Start()
     {
@@ -31,7 +37,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {
       txtEnemiesLeft.text = "Enemies Left: " + (enemiesThisRound - enemiesKilled).ToString();
-      if(enemiesKilled >= enemiesThisRound) //newRound
+      if(enemiesKilled >= enemiesThisRound && roundFlag) //newRound
       {
         roundFlag = false;
         //make button show up to choose next round
@@ -40,10 +46,20 @@ public class Spawner : MonoBehaviour
         enemyLimit += 2;
 
         roundNum++;
-        enemiesThisRound = 10 + roundNum * 10;
+        enemiesThisRound = (10 + roundNum * 10);
 
         txtRoundNum.text = "Round: " + roundNum.ToString();
-        txtEnemiesLeft.text = "Enemies Left: " + (enemiesThisRound).ToString();
+        txtEnemiesLeft.text = "Enemies Left: " + enemiesThisRound.ToString();
+        enemiesKilled = 0;
+
+        for(int i = 0; i < 100000000; i++);
+
+        GameObject p1 = Instantiate (perk1, new Vector3(-60, 0, 0), Quaternion.identity) as GameObject;
+        GameObject p2 = Instantiate (perk2, new Vector3(-20, 0, 0), Quaternion.identity) as GameObject;
+        GameObject p3 = Instantiate (perk3, new Vector3(20, 0, 0), Quaternion.identity) as GameObject;
+        GameObject p4 = Instantiate (perk4, new Vector3(60, 0, 0), Quaternion.identity) as GameObject;
+
+        //Debug.Log(enemiesThisRound);
       }
       //Debug.Log(enemiesAlive);
       if(Time.time > nextSpawn && roundFlag && (enemiesAlive < enemyLimit) && ((enemiesThisRound - enemiesKilled - enemiesAlive) > 0))
