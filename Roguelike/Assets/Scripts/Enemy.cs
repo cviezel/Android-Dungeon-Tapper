@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
   // Start is called before the first frame update
-  float health = 80;
+  float health = 100;
   public float speed;
   public Rigidbody2D rb;
   Player p;
@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
         GameObject healthPack = Instantiate (hp, transform.position, Quaternion.identity) as GameObject;
       }
       Spawner.enemiesAlive--;
+      Spawner.enemiesKilled++;
       Destroy(this.gameObject);
     }
     if(this.name != "MeleeEnemy" && !recentlyHit)

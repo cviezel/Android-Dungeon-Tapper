@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -12,11 +13,18 @@ public class Player : MonoBehaviour
   public Rigidbody2D rb;
   float chargeTime = 0;
   Vector2 lastAim;
-  float health = 100;
+  public static int health = 100;
+  public static int maxHealth = 100;
+  public static int charges = 2;
+  public Text txtHealth;
+  public Text txtCharges;
 
   // Start is called before the first frame update
   void Start()
   {
+    maxHealth = health;
+    txtHealth.text = "Health: " + health.ToString();
+    txtCharges.text = "Charged Shots: " + charges.ToString();
     rb = GetComponent<Rigidbody2D>();
   }
 
@@ -40,8 +48,10 @@ public class Player : MonoBehaviour
     bullet.GetComponent<Rigidbody2D>().velocity = dir * speed;
     FriendlyBullet b = bullet.GetComponent<FriendlyBullet>();
     b.setSpeed(speed);
-    if(fullyCharged)
+    if(fullyCharged && charges > 0)
     {
+      charges--;
+      txtCharges.text = "Charged Shots: " + charges.ToString();
       b.transform.localScale += new Vector3(1, 1, 0);
       bullet.GetComponent<CircleCollider2D>().isTrigger = true;
     }
@@ -87,20 +97,22 @@ public class Player : MonoBehaviour
   {
     if(col.gameObject.tag.Equals("HealthPack"))
     {
-      if(health <= health - 10)
+      if(health <= maxHealth - 10)
       {
         health += 10;
       }
       else
       {
-        health = health;
+        health = maxHealth;
       }
+      txtHealth.text = "Health: " + health.ToString();
       Debug.Log(health);
       Destroy(col.gameObject);
     }
     if(col.gameObject.tag.Equals("Enemy"))
     {
       Spawner.enemiesAlive--;
+      Spawner.enemiesKilled++;
       rb.velocity = new Vector2(0, 0);
       health -= 10;
       Debug.Log(health);
@@ -113,5 +125,6 @@ public class Player : MonoBehaviour
       Debug.Log(health);
       Destroy(col.gameObject);
     }
+    txtHealth.text = "Health: " + health.ToString();
   }
 }

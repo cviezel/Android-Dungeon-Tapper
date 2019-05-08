@@ -35,6 +35,7 @@ public class Bomber : MonoBehaviour
       {
         Destroy(this.gameObject);
         Spawner.enemiesAlive--;
+        Spawner.enemiesKilled++;
       }
     }
   }
@@ -47,6 +48,7 @@ public class Bomber : MonoBehaviour
       if(b != null)
       {
         Spawner.enemiesAlive--;
+        Spawner.enemiesKilled++;
         recentlyHit = true;
         float dmg = b.getSpeed() / 5;
         Destroy(this.gameObject);

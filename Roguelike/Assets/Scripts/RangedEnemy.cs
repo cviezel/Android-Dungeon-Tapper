@@ -43,6 +43,7 @@ public class RangedEnemy : MonoBehaviour
       {
         Destroy(this.gameObject);
         Spawner.enemiesAlive--;
+        Spawner.enemiesKilled++;
       }
       if(this.name != "RangedEnemy" && !recentlyHit)
       {
@@ -87,6 +88,7 @@ public class RangedEnemy : MonoBehaviour
       else if(col.gameObject.tag.Equals("Player"))
       {
         Spawner.enemiesAlive--;
+        Spawner.enemiesKilled++;
         Destroy(this.gameObject);
       }
     }
