@@ -9,8 +9,6 @@ public class SpikeBall : MonoBehaviour
   public float speed;
   public Rigidbody2D rb;
   Player p;
-  bool recentlyHit;
-  float moveTimer = 0;
   public GameObject hp;
 
   float x, y;
@@ -18,8 +16,6 @@ public class SpikeBall : MonoBehaviour
   {
     p = GameObject.Find("Player").GetComponent<Player>();
     rb = GetComponent<Rigidbody2D>();
-    recentlyHit = false;
-
     x = Random.Range(-1f, 1f);
     y = Random.Range(-1f, 1f);
     if(this.name != ("SpikeBall"))
@@ -67,6 +63,8 @@ public class SpikeBall : MonoBehaviour
       if(transform.position.x > 150 || transform.position.x < -150 || transform.position.y > 80 || transform.position.y < -80)
       {
         Destroy(this.gameObject);
+        Spawner.enemiesAlive--;
+        Spawner.enemiesKilled++;
       }
       moveTowardsPlayer(speed);
     }
@@ -79,7 +77,6 @@ public class SpikeBall : MonoBehaviour
       //Debug.Log(col.gameObject.GetComponent<Rigidbody2D>().velocity);
       if(b != null)
       {
-        recentlyHit = true;
         float dmg = b.getSpeed() / 5;
         health -= dmg;
         //Debug.Log("lost " + dmg + " health");
@@ -95,7 +92,6 @@ public class SpikeBall : MonoBehaviour
       //Debug.Log(col.gameObject.GetComponent<Rigidbody2D>().velocity);
       if(b != null)
       {
-        recentlyHit = true;
         float dmg = b.getSpeed() / 5;
         health -= dmg;
         //Debug.Log("lost " + dmg + " health");

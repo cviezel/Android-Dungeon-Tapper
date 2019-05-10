@@ -11,7 +11,6 @@ public class RangedEnemy : MonoBehaviour
     public Rigidbody2D rb;
     Player p;
     bool recentlyHit;
-    float moveTimer = 0;
     void Start()
     {
       p = GameObject.Find("Player").GetComponent<Player>();

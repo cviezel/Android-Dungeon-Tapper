@@ -21,6 +21,7 @@ public class FriendlyBullet : MonoBehaviour
   {
     if(this.name != "FriendlyBullet")
     {
+      transform.Rotate(0, 0, 30);
       if(rb.velocity.x == 0)
       {
         Destroy(this.gameObject);

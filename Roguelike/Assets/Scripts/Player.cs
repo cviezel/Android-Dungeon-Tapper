@@ -112,7 +112,6 @@ public class Player : MonoBehaviour
         health = maxHealth;
       }
       txtHealth.text = "Health: " + health.ToString();
-      Debug.Log(health);
       Destroy(col.gameObject);
     }
     if(col.gameObject.tag.Equals("Enemy"))
@@ -121,14 +120,12 @@ public class Player : MonoBehaviour
       Spawner.enemiesKilled++;
       //rb.velocity = new Vector2(0, 0);
       health -= 10;
-      Debug.Log(health);
       Destroy(col.gameObject);
       tookDamage = true;
     }
     if(col.gameObject.tag.Equals("EnemyBullet"))
     {
       health -= 5;
-      Debug.Log(health);
       Destroy(col.gameObject);
       tookDamage = true;
     }

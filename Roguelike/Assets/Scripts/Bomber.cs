@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class Bomber : MonoBehaviour
 {
-  float health = 100;
   public float speed;
   public Rigidbody2D rb;
   Player p;
-  bool recentlyHit;
-  float moveTimer = 0;
+  public GameObject hp;
   void Start()
   {
     p = GameObject.Find("Player").GetComponent<Player>();
     rb = GetComponent<Rigidbody2D>();
-    recentlyHit = false;
-    if(this.name != "Bomber" && !recentlyHit)
+    if(this.name != "Bomber")
     {
       moveTowardsPlayer(speed);
     }
@@ -47,9 +44,9 @@ public class Bomber : MonoBehaviour
       //Debug.Log(col.gameObject.GetComponent<Rigidbody2D>().velocity);
       if(b != null)
       {
+        GameObject healthPack = Instantiate (hp, transform.position, Quaternion.identity) as GameObject;
         Spawner.enemiesAlive--;
         Spawner.enemiesKilled++;
-        recentlyHit = true;
         float dmg = b.getSpeed() / 5;
         Destroy(this.gameObject);
         Destroy(col.gameObject);
