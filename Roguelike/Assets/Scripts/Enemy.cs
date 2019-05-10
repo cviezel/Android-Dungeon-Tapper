@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
         recentlyHit = true;
         float dmg = b.getSpeed() / 5;
         health -= dmg;
-        Debug.Log("lost " + dmg + " health");
+        //Debug.Log("lost " + dmg + " health");
       }
     }
   }

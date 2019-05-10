@@ -47,13 +47,10 @@ public class FriendlyBullet : MonoBehaviour
       Player.charges = Player.maxCharges;
       Destroy(this.gameObject);
       Player.perkCount++;
-      if((Player.perkCount == 1 && Player.tookDamage) || (Player.perkCount == 2 && !Player.tookDamage))
+      if((Player.perkCount == 1 && Player.tookDamage) || (Player.perkCount >= 2 && !Player.tookDamage))
       {
-        if(Player.perkCount == 2)
-        {
-          Player.perkCount = 0;
-          Player.tookDamage = false;
-        }
+        Player.perkCount = 0;
+        Player.tookDamage = false;
         GameObject p1 = GameObject.Find("Perk1(Clone)");
         GameObject p2 = GameObject.Find("Perk2(Clone)");
         GameObject p3 = GameObject.Find("Perk3(Clone)");
@@ -71,13 +68,10 @@ public class FriendlyBullet : MonoBehaviour
       Player.charges += 2;
       Destroy(this.gameObject);
       Player.perkCount++;
-      if((Player.perkCount == 1 && Player.tookDamage) || (Player.perkCount == 2 && !Player.tookDamage))
+      if((Player.perkCount == 1 && Player.tookDamage) || (Player.perkCount >= 2 && !Player.tookDamage))
       {
-        if(Player.perkCount == 2)
-        {
-          Player.perkCount = 0;
-          Player.tookDamage = false;
-        }
+        Player.perkCount = 0;
+        Player.tookDamage = false;
         GameObject p1 = GameObject.Find("Perk1(Clone)");
         GameObject p2 = GameObject.Find("Perk2(Clone)");
         GameObject p3 = GameObject.Find("Perk3(Clone)");
@@ -98,13 +92,10 @@ public class FriendlyBullet : MonoBehaviour
       }
       Destroy(this.gameObject);
       Player.perkCount++;
-      if((Player.perkCount == 1 && Player.tookDamage) || (Player.perkCount == 2 && !Player.tookDamage))
+      if((Player.perkCount == 1 && Player.tookDamage) || (Player.perkCount >= 2 && !Player.tookDamage))
       {
-        if(Player.perkCount == 2)
-        {
-          Player.perkCount = 0;
-          Player.tookDamage = false;
-        }
+        Player.perkCount = 0;
+        Player.tookDamage = false;
         GameObject p1 = GameObject.Find("Perk1(Clone)");
         GameObject p2 = GameObject.Find("Perk2(Clone)");
         GameObject p3 = GameObject.Find("Perk3(Clone)");
@@ -122,13 +113,10 @@ public class FriendlyBullet : MonoBehaviour
       Player.health += 20;
       Destroy(this.gameObject);
       Player.perkCount++;
-      if((Player.perkCount == 1 && Player.tookDamage) || (Player.perkCount == 2 && !Player.tookDamage))
+      if((Player.perkCount == 1 && Player.tookDamage) || (Player.perkCount >= 2 && !Player.tookDamage))
       {
-        if(Player.perkCount == 2)
-        {
-          Player.perkCount = 0;
-          Player.tookDamage = false;
-        }
+        Player.perkCount = 0;
+        Player.tookDamage = false;
         GameObject p1 = GameObject.Find("Perk1(Clone)");
         GameObject p2 = GameObject.Find("Perk2(Clone)");
         GameObject p3 = GameObject.Find("Perk3(Clone)");

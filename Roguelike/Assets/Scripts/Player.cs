@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
     }
     if(col.gameObject.tag.Equals("EnemyBullet"))
     {
-      health -= 2;
+      health -= 5;
       Debug.Log(health);
       Destroy(col.gameObject);
       tookDamage = true;
