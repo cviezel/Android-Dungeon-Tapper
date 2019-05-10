@@ -31,7 +31,7 @@ public class Bomber : MonoBehaviour
   {
     if(this.name != "Bomber")
     {
-      if(transform.position.x > 80 || transform.position.x > 80 || transform.position.y > 50 || transform.position.y < -50)
+      if(transform.position.x > 100 || transform.position.x < -100 || transform.position.y > 60 || transform.position.y < -60)
       {
         Destroy(this.gameObject);
         Spawner.enemiesAlive--;

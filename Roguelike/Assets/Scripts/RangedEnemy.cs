@@ -47,6 +47,12 @@ public class RangedEnemy : MonoBehaviour
       }
       if(this.name != "RangedEnemy" && !recentlyHit)
       {
+        if(transform.position.x > 100 || transform.position.x < -100 || transform.position.y > 60 || transform.position.y < -60)
+        {
+          Destroy(this.gameObject);
+          Spawner.enemiesAlive--;
+          Spawner.enemiesKilled++;
+        }
         //move(speed);
         int r = Random.Range(-20, 20);
         if(r == 0)

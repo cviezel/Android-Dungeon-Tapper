@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
     int enemyLimit = 10;
     public Text txtRoundNum;
     public Text txtEnemiesLeft;
-    int enemiesThisRound = 20;
+    int enemiesThisRound = 10;
 
     public GameObject perk1;
     public GameObject perk2;
@@ -46,7 +46,7 @@ public class Spawner : MonoBehaviour
         enemyLimit += 2;
 
         roundNum++;
-        enemiesThisRound = (10 + roundNum * 10);
+        enemiesThisRound = (roundNum * 10);
 
         txtRoundNum.text = "Round: " + roundNum.ToString();
         txtEnemiesLeft.text = "Enemies Left: " + enemiesThisRound.ToString();

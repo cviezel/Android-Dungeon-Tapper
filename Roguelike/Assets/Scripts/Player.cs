@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
   public static int charges = 2;
   public static int maxCharges = 2;
   public static float fireDelay = 0.5f;
+  public static bool tookDamage = false;
+  public static int perkCount = 0;
 
   public Text txtHealth;
   public Text txtCharges;
@@ -121,12 +123,14 @@ public class Player : MonoBehaviour
       health -= 10;
       Debug.Log(health);
       Destroy(col.gameObject);
+      tookDamage = true;
     }
     if(col.gameObject.tag.Equals("EnemyBullet"))
     {
       health -= 2;
       Debug.Log(health);
       Destroy(col.gameObject);
+      tookDamage = true;
     }
     txtHealth.text = "Health: " + health.ToString();
   }

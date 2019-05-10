@@ -25,7 +25,7 @@ public class FriendlyBullet : MonoBehaviour
       {
         Destroy(this.gameObject);
       }
-      if(transform.position.x > 80 || transform.position.x > 80 || transform.position.y > 50 || transform.position.y < -50)
+      if(transform.position.x > 100 || transform.position.x < -100 || transform.position.y > 60 || transform.position.y < -60)
       {
         Destroy(this.gameObject);
       }
@@ -46,30 +46,48 @@ public class FriendlyBullet : MonoBehaviour
       Player.health = Player.maxHealth;
       Player.charges = Player.maxCharges;
       Destroy(this.gameObject);
-      GameObject p1 = GameObject.Find("Perk1(Clone)");
-      GameObject p2 = GameObject.Find("Perk2(Clone)");
-      GameObject p3 = GameObject.Find("Perk3(Clone)");
-      GameObject p4 = GameObject.Find("Perk4(Clone)");
-      Destroy(p1.gameObject);
-      Destroy(p2.gameObject);
-      Destroy(p3.gameObject);
-      Destroy(p4.gameObject);
-      Spawner.roundFlag = true;
+      Player.perkCount++;
+      if((Player.perkCount == 1 && Player.tookDamage) || (Player.perkCount == 2 && !Player.tookDamage))
+      {
+        if(Player.perkCount == 2)
+        {
+          Player.perkCount = 0;
+          Player.tookDamage = false;
+        }
+        GameObject p1 = GameObject.Find("Perk1(Clone)");
+        GameObject p2 = GameObject.Find("Perk2(Clone)");
+        GameObject p3 = GameObject.Find("Perk3(Clone)");
+        GameObject p4 = GameObject.Find("Perk4(Clone)");
+        Destroy(p1.gameObject);
+        Destroy(p2.gameObject);
+        Destroy(p3.gameObject);
+        Destroy(p4.gameObject);
+        Spawner.roundFlag = true;
+      }
     }
     else if(col.gameObject.tag.Equals("ChargeCapacity"))
     {
       Player.maxCharges += 2;
       Player.charges += 2;
       Destroy(this.gameObject);
-      GameObject p1 = GameObject.Find("Perk1(Clone)");
-      GameObject p2 = GameObject.Find("Perk2(Clone)");
-      GameObject p3 = GameObject.Find("Perk3(Clone)");
-      GameObject p4 = GameObject.Find("Perk4(Clone)");
-      Destroy(p1.gameObject);
-      Destroy(p2.gameObject);
-      Destroy(p3.gameObject);
-      Destroy(p4.gameObject);
-      Spawner.roundFlag = true;
+      Player.perkCount++;
+      if((Player.perkCount == 1 && Player.tookDamage) || (Player.perkCount == 2 && !Player.tookDamage))
+      {
+        if(Player.perkCount == 2)
+        {
+          Player.perkCount = 0;
+          Player.tookDamage = false;
+        }
+        GameObject p1 = GameObject.Find("Perk1(Clone)");
+        GameObject p2 = GameObject.Find("Perk2(Clone)");
+        GameObject p3 = GameObject.Find("Perk3(Clone)");
+        GameObject p4 = GameObject.Find("Perk4(Clone)");
+        Destroy(p1.gameObject);
+        Destroy(p2.gameObject);
+        Destroy(p3.gameObject);
+        Destroy(p4.gameObject);
+        Spawner.roundFlag = true;
+      }
     }
     else if(col.gameObject.tag.Equals("AttackSpeed"))
     {
@@ -79,30 +97,48 @@ public class FriendlyBullet : MonoBehaviour
         Player.fireDelay = 0f;
       }
       Destroy(this.gameObject);
-      GameObject p1 = GameObject.Find("Perk1(Clone)");
-      GameObject p2 = GameObject.Find("Perk2(Clone)");
-      GameObject p3 = GameObject.Find("Perk3(Clone)");
-      GameObject p4 = GameObject.Find("Perk4(Clone)");
-      Destroy(p1.gameObject);
-      Destroy(p2.gameObject);
-      Destroy(p3.gameObject);
-      Destroy(p4.gameObject);
-      Spawner.roundFlag = true;
+      Player.perkCount++;
+      if((Player.perkCount == 1 && Player.tookDamage) || (Player.perkCount == 2 && !Player.tookDamage))
+      {
+        if(Player.perkCount == 2)
+        {
+          Player.perkCount = 0;
+          Player.tookDamage = false;
+        }
+        GameObject p1 = GameObject.Find("Perk1(Clone)");
+        GameObject p2 = GameObject.Find("Perk2(Clone)");
+        GameObject p3 = GameObject.Find("Perk3(Clone)");
+        GameObject p4 = GameObject.Find("Perk4(Clone)");
+        Destroy(p1.gameObject);
+        Destroy(p2.gameObject);
+        Destroy(p3.gameObject);
+        Destroy(p4.gameObject);
+        Spawner.roundFlag = true;
+      }
     }
     else if(col.gameObject.tag.Equals("MaxHealth"))
     {
       Player.maxHealth += 20;
       Player.health += 20;
       Destroy(this.gameObject);
-      GameObject p1 = GameObject.Find("Perk1(Clone)");
-      GameObject p2 = GameObject.Find("Perk2(Clone)");
-      GameObject p3 = GameObject.Find("Perk3(Clone)");
-      GameObject p4 = GameObject.Find("Perk4(Clone)");
-      Destroy(p1.gameObject);
-      Destroy(p2.gameObject);
-      Destroy(p3.gameObject);
-      Destroy(p4.gameObject);
-      Spawner.roundFlag = true;
+      Player.perkCount++;
+      if((Player.perkCount == 1 && Player.tookDamage) || (Player.perkCount == 2 && !Player.tookDamage))
+      {
+        if(Player.perkCount == 2)
+        {
+          Player.perkCount = 0;
+          Player.tookDamage = false;
+        }
+        GameObject p1 = GameObject.Find("Perk1(Clone)");
+        GameObject p2 = GameObject.Find("Perk2(Clone)");
+        GameObject p3 = GameObject.Find("Perk3(Clone)");
+        GameObject p4 = GameObject.Find("Perk4(Clone)");
+        Destroy(p1.gameObject);
+        Destroy(p2.gameObject);
+        Destroy(p3.gameObject);
+        Destroy(p4.gameObject);
+        Spawner.roundFlag = true;
+      }
     }
   }
 }
