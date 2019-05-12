@@ -23,8 +23,6 @@ public class SpikeBall : MonoBehaviour
       Vector2 dir = new Vector2(x, y);
       rb.velocity = dir * speed;
     }
-
-    Debug.Log("x is " + x + " y is " + y);
   }
   void moveTowardsPlayer(float speed)
   {

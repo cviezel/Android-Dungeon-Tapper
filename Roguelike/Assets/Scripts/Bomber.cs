@@ -44,7 +44,7 @@ public class Bomber : MonoBehaviour
       //Debug.Log(col.gameObject.GetComponent<Rigidbody2D>().velocity);
       if(b != null)
       {
-        GameObject healthPack = Instantiate (hp, transform.position, Quaternion.identity) as GameObject;
+        //GameObject healthPack = Instantiate (hp, transform.position, Quaternion.identity) as GameObject;
         Spawner.enemiesAlive--;
         Spawner.enemiesKilled++;
         float dmg = b.getSpeed() / 5;

@@ -14,18 +14,23 @@ public class Spawner : MonoBehaviour
     public GameObject spikeBall;
     float nextSpawn = 0;
     public static int enemiesKilled = 0;
-    int roundNum = 1;
+    public static int roundNum = 1;
     public static bool roundFlag = true;
     public static int enemiesAlive = 0;
     int enemyLimit = 10;
     public Text txtRoundNum;
     public Text txtEnemiesLeft;
-    int enemiesThisRound = 10;
+    public static int enemiesThisRound = 10;
 
     public GameObject perk1;
     public GameObject perk2;
     public GameObject perk3;
     public GameObject perk4;
+    public GameObject ghostBoss;
+
+    public static bool bossDeath = false;
+
+    //public AudioSource bg;
 
 
     void Start()
@@ -38,8 +43,9 @@ public class Spawner : MonoBehaviour
     void Update()
     {
       txtEnemiesLeft.text = "Enemies Left: " + (enemiesThisRound - enemiesKilled).ToString();
-      if(enemiesKilled >= enemiesThisRound && roundFlag) //newRound
+      if((enemiesKilled >= enemiesThisRound && roundFlag) || bossDeath) //newRound
       {
+        bossDeath = false;
         roundFlag = false;
         //make button show up to choose next round
         //choose increased beam attacks, increased attack speed, or increased health
@@ -61,6 +67,14 @@ public class Spawner : MonoBehaviour
         GameObject p4 = Instantiate (perk4, new Vector3(60, 0, 0), Quaternion.identity) as GameObject;
 
         //Debug.Log(enemiesThisRound);
+      }
+      if((roundNum % 4 == 0) && roundFlag && !bossDeath) //bossround
+      {
+        bossDeath = false;
+        roundFlag = false;
+        enemiesThisRound = 1;
+        enemiesAlive++;
+        GameObject boss = Instantiate (ghostBoss, new Vector2(0, 30), Quaternion.identity) as GameObject;
       }
       //Debug.Log(enemiesAlive);
       if(Time.time > nextSpawn && roundFlag && (enemiesAlive < enemyLimit) && ((enemiesThisRound - enemiesKilled - enemiesAlive) > 0))

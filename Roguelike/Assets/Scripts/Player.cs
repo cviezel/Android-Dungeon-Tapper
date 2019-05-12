@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class Player : MonoBehaviour
 {
@@ -72,6 +74,21 @@ public class Player : MonoBehaviour
   */
   void Update()
   {
+    if(health <= 0)
+    {
+      Spawner.enemiesKilled = 0;
+      Spawner.roundNum = 1;
+      Spawner.roundFlag = true;
+      Spawner.enemiesAlive = 0;
+      health = 100;
+      maxHealth = 100;
+      charges = 2;
+      maxCharges = 2;
+      fireDelay = 0.5f;
+      tookDamage = false;
+      perkCount = 0;
+      SceneManager.LoadScene("MainMenu");
+    }
     Touch[] touch = Input.touches;
     if(Input.touchCount == 1)
     {

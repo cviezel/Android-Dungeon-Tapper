@@ -2,7 +2,8 @@ Android
 PlayerPath?
 C:/Users/Cameron/Documents/Ubuntu/cs441/Android-Roguelike/Roguelike/test.apk
 SceneListBegin?
-Assets/game.unity
+Assets/Scenes/MainMenu.unity
+Assets/Scenes/Game.unity
 SceneListEnd?
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 1fbe9f3e9e854410738a95792def33c3 Assembly-CSharp.dll:.RangedEnemy
@@ -119,9 +120,10 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
 94017dcc9f00fe671ea7dc427b4da011 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 1eaaeb75cccd198b2d6d89666071e902 Assembly-CSharp.dll:.FriendlyBullet
-119ceff94778ef411577e0229ca954f5 Assembly-CSharp.dll:.Spawner
-2445479c25b0a7273e0588f722f7baeb Assembly-CSharp.dll:.Bomber
+a090fb98b2c75278983e1a84b06a7418 Assembly-CSharp.dll:.Spawner
+bccb3120e044cd5f3b5b644cbaa347df Assembly-CSharp.dll:.Bomber
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
+bccb3120e044cd5f3b5b644cbaa347df Assembly-CSharp.dll:.SpikeBall
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
@@ -163,3 +165,5 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 f6debd247742b965f639fdc0a1f0ea19 Assembly-CSharp.dll:.EnemyBullet
+3c92a7e2953f4ba4f071a2242a6b433b Assembly-CSharp.dll:.GhostKing
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.StartButton
