@@ -1,3 +1,4 @@
+# Android Roguelike
 A roguelike game for Android devices made using C# and Unity. The player moves around the screen following your first touch, and shoots shuriken in the direction that you tap with a second finger. Additionally, you can charge your shot which will increase its damage and speed. If you hold for an entire second, the shot will phase through all enemies in a straight line and kill them. There are a limited amount of these charged shots, starting at 2, which can be increased with perks.
 
 After completing a round, 4 perks appear on the screen. You can choose which perk to get by throwing a shuriken at the perk. The perks are as follows:
