@@ -10,12 +10,10 @@ public class RangedEnemy : MonoBehaviour
     public float speed;
     public Rigidbody2D rb;
     Player p;
-    bool recentlyHit;
     void Start()
     {
       p = GameObject.Find("Player").GetComponent<Player>();
       rb = GetComponent<Rigidbody2D>();
-      recentlyHit = false;
     }
     void move(float speed)
     {
@@ -44,7 +42,7 @@ public class RangedEnemy : MonoBehaviour
         Spawner.enemiesAlive--;
         Spawner.enemiesKilled++;
       }
-      if(this.name != "RangedEnemy" && !recentlyHit)
+      if(this.name != "RangedEnemy")
       {
         if(transform.position.x > 100 || transform.position.x < -100 || transform.position.y > 60 || transform.position.y < -60)
         {

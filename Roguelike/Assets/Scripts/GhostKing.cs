@@ -5,7 +5,7 @@ using UnityEngine;
 public class GhostKing : MonoBehaviour
 {
   // Start is called before the first frame update
-  float health = 200 + (Spawner.roundNum / 4) * 50;
+  float health = 300 + (Spawner.roundNum / 4) * 50;
   public float speed;
   public Rigidbody2D rb;
   Player p;

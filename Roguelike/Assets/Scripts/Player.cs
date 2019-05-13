@@ -24,12 +24,15 @@ public class Player : MonoBehaviour
   public Text txtHealth;
   public Text txtCharges;
 
+  public Animator anim;
+
   // Start is called before the first frame update
   void Start()
   {
     maxHealth = health;
     txtHealth.text = "Health: " + health.ToString();
     txtCharges.text = "Charged Shots: " + charges.ToString();
+    anim = GetComponent<Animator>();
     //rb = GetComponent<Rigidbody2D>();
   }
 
@@ -47,6 +50,7 @@ public class Player : MonoBehaviour
   }
   void Shoot(Vector2 aim, float speed, bool fullyCharged)
   {
+    anim.SetTrigger("Throw");
     Vector2 dir = aim - (new Vector2(transform.position.x, transform.position.y));
     dir.Normalize();
     GameObject bullet = Instantiate (friendlyBullet, transform.position, Quaternion.identity) as GameObject;
@@ -80,6 +84,8 @@ public class Player : MonoBehaviour
       Spawner.roundNum = 1;
       Spawner.roundFlag = true;
       Spawner.enemiesAlive = 0;
+      Spawner.enemiesThisRound = 10;
+      Spawner.bossDeath = false;
       health = 100;
       maxHealth = 100;
       charges = 2;

@@ -60,11 +60,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Bolt.cs" />
     <Compile Include="Assets\Scripts\Bomber.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EnemyBullet.cs" />
     <Compile Include="Assets\Scripts\FriendlyBullet.cs" />
     <Compile Include="Assets\Scripts\GhostKing.cs" />
+    <Compile Include="Assets\Scripts\Mage.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\RangedEnemy.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />

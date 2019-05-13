@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     public GameObject rangedEnemy;
     public GameObject bomber;
     public GameObject spikeBall;
+    public GameObject mage;
     float nextSpawn = 0;
     public static int enemiesKilled = 0;
     public static int roundNum = 1;
@@ -80,8 +81,8 @@ public class Spawner : MonoBehaviour
       if(Time.time > nextSpawn && roundFlag && (enemiesAlive < enemyLimit) && ((enemiesThisRound - enemiesKilled - enemiesAlive) > 0))
       {
         nextSpawn = Time.time + spawnDelay;
-        Vector2 spawnLocation = new Vector2(Random.Range(-80, 80), Random.Range(-50, 50));
-        int x = Random.Range(0, 4);
+        Vector2 spawnLocation = new Vector2(Random.Range(-78, 78), Random.Range(-47, 47));
+        int x = Random.Range(0, 5);
         if(x == 0)
         {
           enemiesAlive++;
@@ -101,6 +102,11 @@ public class Spawner : MonoBehaviour
         {
           enemiesAlive++;
           GameObject e = Instantiate(spikeBall, spawnLocation, Quaternion.identity) as GameObject;
+        }
+        else if(x == 4)
+        {
+          enemiesAlive++;
+          GameObject e = Instantiate(mage, spawnLocation, Quaternion.identity) as GameObject;
         }
       }
     }

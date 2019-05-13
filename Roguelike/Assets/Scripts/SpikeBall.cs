@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpikeBall : MonoBehaviour
 {
   // Start is called before the first frame update
-  float health = 50;
+  float health = 40;
   public float speed;
   public Rigidbody2D rb;
   Player p;
@@ -58,7 +58,7 @@ public class SpikeBall : MonoBehaviour
     if(this.name != ("SpikeBall"))
     {
       transform.Rotate(0, 0, 15);
-      if(transform.position.x > 150 || transform.position.x < -150 || transform.position.y > 80 || transform.position.y < -80)
+      if(transform.position.x > 150 || transform.position.x < -150 || transform.position.y > 70 || transform.position.y < -70)
       {
         Destroy(this.gameObject);
         Spawner.enemiesAlive--;
