@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 11945934}
   - component: {fileID: 11945933}
   m_Layer: 9
-  m_Name: RangedEnemy
+  m_Name: RangedEnemy1
   m_TagString: RangedEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,12 +141,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 11945932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef405e40581d9c24a8996ed61f4e3705, type: 3}
+  m_Script: {fileID: 11500000, guid: 32d8deefafe428f41bfae48c255b60dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBullets: {fileID: 2108222297}
-  speed: 7
-  rb: {fileID: 0}
 --- !u!50 &11945934
 Rigidbody2D:
   serializedVersion: 4
@@ -357,7 +355,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  speed: 0
   perk1: {fileID: 1522495998}
   perk2: {fileID: 1109867432}
   perk3: {fileID: 1508264725}
@@ -397,7 +394,7 @@ GameObject:
   - component: {fileID: 42123970}
   - component: {fileID: 42123969}
   m_Layer: 9
-  m_Name: Mage
+  m_Name: RangedEnemy2
   m_TagString: RangedEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,8 +413,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBullets: {fileID: 939934981}
-  speed: 5
-  rb: {fileID: 939934983}
 --- !u!50 &42123970
 Rigidbody2D:
   serializedVersion: 4
@@ -3467,7 +3462,7 @@ GameObject:
   - component: {fileID: 2108222298}
   - component: {fileID: 2108222302}
   m_Layer: 11
-  m_Name: EnemyBullet
+  m_Name: ShooterBullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3581,11 +3576,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2108222297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e733bf8fd0058094380a157856fd9bac, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e276284c0c3ce34b9b0da7b8d850bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  speed: 50
 --- !u!1 &2138873097
 GameObject:
   m_ObjectHideFlags: 0

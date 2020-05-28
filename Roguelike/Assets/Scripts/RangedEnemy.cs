@@ -2,39 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedEnemy : MonoBehaviour
+public abstract class RangedEnemy : MonoBehaviour
 {
     // Start is called before the first frame update
-    float health = 50;
-    public GameObject enemyBullets;
-    public float speed;
-    public Rigidbody2D rb;
-    Player p;
-    void Start()
+    protected float health = 50;
+    protected float speed;
+    protected Rigidbody2D rb;
+    protected Player p;
+
+    protected void Start()
     {
       p = GameObject.Find("Player").GetComponent<Player>();
       rb = GetComponent<Rigidbody2D>();
     }
-    void move(float speed)
+    protected void move(float speed)
     {
       Vector2 dir = (new Vector2(Random.Range(-100, 100), Random.Range(-100, 100)));
       dir.Normalize();
       rb.velocity = dir * speed;
     }
-    void moveTowardsPlayer(float speed)
-    {
-      Vector2 dir = new Vector2(p.transform.position.x, p.transform.position.y) - (new Vector2(transform.position.x, transform.position.y));
-      dir.Normalize();
-      rb.velocity = dir * speed;
-      /*
-      Vector2 target = new Vector2(p.transform.position.x, p.transform.position.y);
-      float step = speed * Time.deltaTime;
-      transform.position = Vector2.MoveTowards(transform.position, target, step);
-      */
-
-    }
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
       if(health <= 0)
       {
@@ -42,7 +30,7 @@ public class RangedEnemy : MonoBehaviour
         Spawner.enemiesAlive--;
         Spawner.enemiesKilled++;
       }
-      if(this.name != "RangedEnemy")
+      if(this.name.Contains("(Clone)"))
       {
         if(transform.position.x > 100 || transform.position.x < -100 || transform.position.y > 60 || transform.position.y < -60)
         {
@@ -55,7 +43,7 @@ public class RangedEnemy : MonoBehaviour
         if(r == 0)
         {
           //Debug.Log(r);
-          move(3);
+          move(speed);
         }
         r = Random.Range(-50, 50);
         if(r == 0)
@@ -65,16 +53,9 @@ public class RangedEnemy : MonoBehaviour
         }
       }
     }
-    void fire()
-    {
-      Vector2 dir = new Vector2(p.transform.position.x, p.transform.position.y) - (new Vector2(transform.position.x, transform.position.y));
-      dir.Normalize();
-      GameObject enemyBullet = Instantiate (enemyBullets, transform.position, Quaternion.identity) as GameObject;
-      enemyBullet.GetComponent<Rigidbody2D>().velocity = dir * 50;
-      EnemyBullet b = enemyBullet.GetComponent<EnemyBullet>();
-      b.setSpeed(speed);
-    }
-    void OnCollisionEnter2D (Collision2D col)
+    public abstract void fire();
+
+    protected void OnCollisionEnter2D (Collision2D col)
     {
       if(col.gameObject.tag.Equals("FriendlyBullet"))
       {
@@ -82,20 +63,16 @@ public class RangedEnemy : MonoBehaviour
         //Debug.Log(col.gameObject.GetComponent<Rigidbody2D>().velocity);
         if(b != null)
         {
-          float dmg = b.getSpeed() / 5;
-          health -= dmg;
-          //Debug.Log("lost " + dmg + " health");
+          takeDamage(b);
           Destroy(col.gameObject);
         }
       }
       else if(col.gameObject.tag.Equals("Player"))
       {
-        Spawner.enemiesAlive--;
-        Spawner.enemiesKilled++;
-        Destroy(this.gameObject);
+        die();
       }
     }
-    void OnTriggerEnter2D(Collider2D col)
+    protected void OnTriggerEnter2D(Collider2D col)
     {
       if(col.gameObject.tag.Equals("FriendlyBullet"))
       {
@@ -103,10 +80,21 @@ public class RangedEnemy : MonoBehaviour
         //Debug.Log(col.gameObject.GetComponent<Rigidbody2D>().velocity);
         if(b != null)
         {
-          float dmg = b.getSpeed() / 5;
-          health -= dmg;
-          Debug.Log("lost " + dmg + " health");
+          takeDamage(b);
         }
+      }
+    }
+    private void die() {
+      Spawner.enemiesAlive--;
+      Spawner.enemiesKilled++;
+      Destroy(this.gameObject);
+    }
+    private void takeDamage(FriendlyBullet b) {
+      if(b.isSuper()) {
+        die();
+      }
+      else {
+        health -= 25;
       }
     }
 }

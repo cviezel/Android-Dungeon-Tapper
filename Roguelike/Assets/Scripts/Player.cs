@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
     b.setSpeed(speed);
     if(fullyCharged && charges > 0)
     {
+      b.setSuper();
       charges--;
       txtCharges.text = "Charged Shots: " + charges.ToString();
       b.transform.localScale += new Vector3(1, 1, 0);
@@ -105,7 +106,7 @@ public class Player : MonoBehaviour
       {
         //Debug.Log(chargeTime);
         fireTime = Time.time + fireDelay;
-        Shoot(lastAim, (1 + chargeTime) * 150, false);
+        Shoot(lastAim, 250, false);
         chargeTime = 0;
       }
     }

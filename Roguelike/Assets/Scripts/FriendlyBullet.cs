@@ -5,7 +5,8 @@ using UnityEngine;
 public class FriendlyBullet : MonoBehaviour
 {
   public Rigidbody2D rb;
-  public float speed;
+  private float speed;
+  private bool super = false;
 
   public GameObject perk1;
   public GameObject perk2;
@@ -39,6 +40,12 @@ public class FriendlyBullet : MonoBehaviour
   public void setSpeed(float s)
   {
     speed = s;
+  }
+  public void setSuper() {
+    super = true;
+  }
+  public bool isSuper() {
+    return super;
   }
   void OnCollisionEnter2D (Collision2D col)
   {
